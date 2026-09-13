@@ -1,11 +1,30 @@
-stage('Docker Build') {
-    steps {
-        echo 'Docker Build Success'
-    }
-}
+pipeline {
+    agent any
 
-stage('Deploy') {
-    steps {
-        echo 'Deploy Success'
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checkout Source Code'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running Test'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                echo 'Docker Build Success'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploy Success'
+            }
+        }
     }
 }

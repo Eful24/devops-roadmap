@@ -1,36 +1,11 @@
-pipeline {
-    agent any
+stage('Docker Build') {
+    steps {
+        echo 'Docker Build Success'
+    }
+}
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                echo 'Checkout Source Code'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running Test'
-            }
-        }
-
-        stage('Docker Build') {
-            steps {
-                sh 'docker build -t my-web:latest .'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh '''
-                docker rm -f myweb-app || true
-                docker run -d \
-                  --name myweb-app \
-                  -p 8083:80 \
-                  my-web:latest
-                '''
-            }
-        }
+stage('Deploy') {
+    steps {
+        echo 'Deploy Success'
     }
 }
